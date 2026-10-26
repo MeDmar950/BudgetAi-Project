@@ -1,0 +1,22 @@
+{
+  "@@locale": "ar",
+  "appTitle": "BudgetAI",
+  "tagline": "الإدارة المالية الذكية لمصر",
+  "currencyEGP": "ج.م",
+  "currencySymbol": "ج.م",
+  "totalBalance": "إجمالي الرصيد",
+  "income": "دخل",
+  "expense": "مصروف",
+  "transfer": "تحويل",
+  "recentTransactions": "أحدث المعاملات",
+  "noTransactionsYet": "لا توجد معاملات بعد",
+  "accounts": "الحسابات",
+  "budgets": "الميزانيات",
+  "analytics": "التحليلات",
+  "aiAssistant": "المساعد الذكي",
+  "settings": "الإعدادات",
+  "switchLanguage": "English",
+  "currentLanguage": "العربية",
+  "ocrDraftNotice": "الفواتير الممسوحة ضوئياً تُحفظ كمسودات حتى تؤكدها بنفسك.",
+  "aiDisclaimer": "توصيات الذكاء الاصطناعي إرشادية ولا تقوم بتعديل الأرصدة أو المعاملات تلقائياً."
+}

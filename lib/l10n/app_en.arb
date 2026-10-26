@@ -1,0 +1,79 @@
+{
+  "@@locale": "en",
+  "appTitle": "BudgetAI",
+  "@appTitle": {
+    "description": "Application title"
+  },
+  "tagline": "Smart Financial Management for Egypt",
+  "@tagline": {
+    "description": "App tagline"
+  },
+  "currencyEGP": "EGP",
+  "@currencyEGP": {
+    "description": "Currency code for Egyptian Pound"
+  },
+  "currencySymbol": "EGP",
+  "@currencySymbol": {
+    "description": "Currency display symbol"
+  },
+  "totalBalance": "Total Balance",
+  "@totalBalance": {
+    "description": "Header label for total balance"
+  },
+  "income": "Income",
+  "@income": {
+    "description": "Transaction type income"
+  },
+  "expense": "Expense",
+  "@expense": {
+    "description": "Transaction type expense"
+  },
+  "transfer": "Transfer",
+  "@transfer": {
+    "description": "Transaction type transfer"
+  },
+  "recentTransactions": "Recent Transactions",
+  "@recentTransactions": {
+    "description": "Section header for recent transactions"
+  },
+  "noTransactionsYet": "No transactions yet",
+  "@noTransactionsYet": {
+    "description": "Empty state label for transactions"
+  },
+  "accounts": "Accounts",
+  "@accounts": {
+    "description": "Accounts tab / section"
+  },
+  "budgets": "Budgets",
+  "@budgets": {
+    "description": "Budgets tab / section"
+  },
+  "analytics": "Analytics",
+  "@analytics": {
+    "description": "Analytics tab / section"
+  },
+  "aiAssistant": "AI Assistant",
+  "@aiAssistant": {
+    "description": "AI Assistant tab / section"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings tab / section"
+  },
+  "switchLanguage": "العربية",
+  "@switchLanguage": {
+    "description": "Button to switch language to Arabic"
+  },
+  "currentLanguage": "English",
+  "@currentLanguage": {
+    "description": "Label for current active language"
+  },
+  "ocrDraftNotice": "Scanned receipts are saved as drafts until confirmed by you.",
+  "@ocrDraftNotice": {
+    "description": "Notice explaining OCR draft status"
+  },
+  "aiDisclaimer": "AI insights are assistive and never modify balances or records automatically.",
+  "@aiDisclaimer": {
+    "description": "Disclaimer that AI does not execute financial transactions"
+  }
+}

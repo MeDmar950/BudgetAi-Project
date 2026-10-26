@@ -1,121 +1,339 @@
 import 'package:flutter/material.dart';
+import 'package:budget_ai/l10n/app_localizations.dart';
+import 'core/localization/l10n_extension.dart';
+import 'core/money/money.dart';
+import 'core/theme/app_colors.dart';
+import 'core/theme/app_spacing.dart';
+import 'core/theme/app_theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const BudgetAiApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class BudgetAiApp extends StatefulWidget {
+  const BudgetAiApp({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<BudgetAiApp> createState() => _BudgetAiAppState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _BudgetAiAppState extends State<BudgetAiApp> {
+  Locale _locale = const Locale('ar'); // Default to Egypt-first Arabic (RTL)
 
-  void _incrementCounter() {
+  void _toggleLocale() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      _locale = _locale.languageCode == 'ar'
+          ? const Locale('en')
+          : const Locale('ar');
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    return MaterialApp(
+      title: 'BudgetAI',
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.darkTheme,
+      themeMode: ThemeMode.dark,
+      locale: _locale,
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      home: BudgetAiShellScreen(
+        onToggleLanguage: _toggleLocale,
+        currentLocale: _locale,
+      ),
+    );
+  }
+}
+
+class BudgetAiShellScreen extends StatelessWidget {
+  final VoidCallback onToggleLanguage;
+  final Locale currentLocale;
+
+  const BudgetAiShellScreen({
+    super.key,
+    required this.onToggleLanguage,
+    required this.currentLocale,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final isArabic = currentLocale.languageCode == 'ar';
+
+    // Demo balance formatted with safe integer-minor Money utility (e.g. 24,500.50 EGP)
+    final demoBalance = Money.fromMinorUnits(2450050);
+    final demoIncome = Money.fromMinorUnits(3000000);
+    final demoExpense = Money.fromMinorUnits(549950);
+
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: .center,
+        title: Row(
           children: [
-            const Text('You have pushed the button this many times:'),
+            Container(
+              padding: const EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                color: AppColors.primaryContainer,
+                borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
+              ),
+              child: const Icon(
+                Icons.account_balance_wallet_rounded,
+                color: AppColors.primary,
+                size: 20,
+              ),
+            ),
+            const SizedBox(width: AppSpacing.sm),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              l10n.appTitle,
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ],
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsetsDirectional.only(end: AppSpacing.md),
+            child: ActionChip(
+              avatar: const Icon(
+                Icons.language,
+                size: 16,
+                color: AppColors.textPrimary,
+              ),
+              label: Text(
+                l10n.switchLanguage,
+                style: const TextStyle(
+                  color: AppColors.textPrimary,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              backgroundColor: AppColors.surfaceElevated,
+              side: const BorderSide(color: AppColors.border),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
+              ),
+              onPressed: onToggleLanguage,
+            ),
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: AppSpacing.screenPadding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Welcome card
+              Card(
+                color: AppColors.surfaceCard,
+                child: Padding(
+                  padding: AppSpacing.cardPadding,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.totalBalance,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      const SizedBox(height: AppSpacing.xs),
+                      Text(
+                        demoBalance.format(isArabic ? 'ar' : 'en'),
+                        style: Theme.of(context).textTheme.displayLarge
+                            ?.copyWith(
+                              color: AppColors.primaryLight,
+                              fontWeight: FontWeight.w700,
+                            ),
+                      ),
+                      const SizedBox(height: AppSpacing.md),
+                      const Divider(color: AppColors.borderSubtle),
+                      const SizedBox(height: AppSpacing.md),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: _StatMiniCard(
+                              label: l10n.income,
+                              amount: demoIncome.format(isArabic ? 'ar' : 'en'),
+                              color: AppColors.income,
+                              icon: Icons.arrow_downward_rounded,
+                            ),
+                          ),
+                          const SizedBox(width: AppSpacing.sm),
+                          Expanded(
+                            child: _StatMiniCard(
+                              label: l10n.expense,
+                              amount: demoExpense.format(
+                                isArabic ? 'ar' : 'en',
+                              ),
+                              color: AppColors.expense,
+                              icon: Icons.arrow_upward_rounded,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: AppSpacing.md),
+
+              // Architectural Guardrail Banners
+              _GuardrailBanner(
+                icon: Icons.document_scanner_outlined,
+                title: 'OCR Draft Isolation',
+                description: l10n.ocrDraftNotice,
+                color: AppColors.warning,
+              ),
+              const SizedBox(height: AppSpacing.sm),
+              _GuardrailBanner(
+                icon: Icons.psychology_outlined,
+                title: 'AI Assistive Guardrail',
+                description: l10n.aiDisclaimer,
+                color: AppColors.primary,
+              ),
+              const SizedBox(height: AppSpacing.lg),
+
+              // Section: Foundation Shell Note
+              Card(
+                color: AppColors.surface,
+                child: Padding(
+                  padding: AppSpacing.cardPadding,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.layers_rounded,
+                            color: AppColors.primary,
+                            size: 20,
+                          ),
+                          const SizedBox(width: AppSpacing.xs),
+                          Text(
+                            'BudgetAI Foundation Shell',
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: AppSpacing.xs),
+                      Text(
+                        'This shell establishes the RTL/LTR localization pipeline, dark design tokens, and exact integer minor-unit financial rules. Feature screens await Figma frame alignment per team sprint plan.',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _StatMiniCard extends StatelessWidget {
+  final String label;
+  final String amount;
+  final Color color;
+  final IconData icon;
+
+  const _StatMiniCard({
+    required this.label,
+    required this.amount,
+    required this.color,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.sm),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
+        border: Border.all(color: AppColors.borderSubtle),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(icon, size: 14, color: color),
+              const SizedBox(width: 4),
+              Text(
+                label,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 4),
+          Text(
+            amount,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: color,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _GuardrailBanner extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String description;
+  final Color color;
+
+  const _GuardrailBanner({
+    required this.icon,
+    required this.title,
+    required this.description,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+        border: Border.all(color: color.withAlpha(80)),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, color: color, size: 22),
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: color,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 13,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  description,
+                  style: const TextStyle(
+                    color: AppColors.textSecondary,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
