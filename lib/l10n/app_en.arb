@@ -32,6 +32,10 @@
   "@transfer": {
     "description": "Transaction type transfer"
   },
+  "transactions": "Transactions",
+  "@transactions": {
+    "description": "Transactions tab / section"
+  },
   "recentTransactions": "Recent Transactions",
   "@recentTransactions": {
     "description": "Section header for recent transactions"

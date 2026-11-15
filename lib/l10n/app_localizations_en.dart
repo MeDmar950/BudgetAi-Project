@@ -34,6 +34,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get transfer => 'Transfer';
 
   @override
+  String get transactions => 'Transactions';
+
+  @override
   String get recentTransactions => 'Recent Transactions';
 
   @override

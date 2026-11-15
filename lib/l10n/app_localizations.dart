@@ -146,6 +146,12 @@ abstract class AppLocalizations {
   /// **'Transfer'**
   String get transfer;
 
+  /// Transactions tab / section
+  ///
+  /// In en, this message translates to:
+  /// **'Transactions'**
+  String get transactions;
+
   /// Section header for recent transactions
   ///
   /// In en, this message translates to:

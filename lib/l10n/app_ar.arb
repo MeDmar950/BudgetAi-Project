@@ -8,6 +8,7 @@
   "income": "دخل",
   "expense": "مصروف",
   "transfer": "تحويل",
+  "transactions": "المعاملات",
   "recentTransactions": "أحدث المعاملات",
   "noTransactionsYet": "لا توجد معاملات بعد",
   "accounts": "الحسابات",

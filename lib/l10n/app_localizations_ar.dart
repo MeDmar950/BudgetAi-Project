@@ -34,6 +34,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get transfer => 'تحويل';
 
   @override
+  String get transactions => 'المعاملات';
+
+  @override
   String get recentTransactions => 'أحدث المعاملات';
 
   @override
