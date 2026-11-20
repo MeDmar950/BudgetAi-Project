@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:budget_ai/l10n/app_localizations.dart';
+
 import 'core/routing/app_router.dart';
 import 'core/theme/app_theme.dart';
 

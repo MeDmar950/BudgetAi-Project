@@ -1,6 +1,7 @@
 import 'package:budget_ai/core/money/currency.dart';
 import 'package:budget_ai/core/money/money.dart';
 import 'package:budget_ai/features/accounts/domain/account.dart';
+
 import 'transaction.dart';
 
 /// Summary of cash flow analytics for a given time window.

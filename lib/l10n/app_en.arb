@@ -16,6 +16,14 @@
   "@currencySymbol": {
     "description": "Currency display symbol"
   },
+  "piastre": "Piastre",
+  "@piastre": {
+    "description": "Egyptian minor currency unit singular"
+  },
+  "piastres": "Piastres",
+  "@piastres": {
+    "description": "Egyptian minor currency unit plural"
+  },
   "totalBalance": "Total Balance",
   "@totalBalance": {
     "description": "Header label for total balance"
@@ -79,5 +87,406 @@
   "aiDisclaimer": "AI insights are assistive and never modify balances or records automatically.",
   "@aiDisclaimer": {
     "description": "Disclaimer that AI does not execute financial transactions"
+  },
+
+  "save": "Save",
+  "@save": {
+    "description": "Save action button"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel action button"
+  },
+  "confirm": "Confirm",
+  "@confirm": {
+    "description": "Confirm action button"
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "Delete action button"
+  },
+  "edit": "Edit",
+  "@edit": {
+    "description": "Edit action button"
+  },
+  "add": "Add",
+  "@add": {
+    "description": "Add action button"
+  },
+  "back": "Back",
+  "@back": {
+    "description": "Back button"
+  },
+  "next": "Next",
+  "@next": {
+    "description": "Next button"
+  },
+  "submit": "Submit",
+  "@submit": {
+    "description": "Submit button"
+  },
+  "done": "Done",
+  "@done": {
+    "description": "Done button"
+  },
+  "close": "Close",
+  "@close": {
+    "description": "Close button"
+  },
+  "retry": "Retry",
+  "@retry": {
+    "description": "Retry button"
+  },
+  "search": "Search",
+  "@search": {
+    "description": "Search placeholder or button"
+  },
+  "filter": "Filter",
+  "@filter": {
+    "description": "Filter button"
+  },
+  "apply": "Apply",
+  "@apply": {
+    "description": "Apply button"
+  },
+  "reset": "Reset",
+  "@reset": {
+    "description": "Reset button"
+  },
+  "continueButton": "Continue",
+  "@continueButton": {
+    "description": "Generic continue button"
+  },
+
+  "login": "Log In",
+  "@login": {
+    "description": "Log In button"
+  },
+  "register": "Register",
+  "@register": {
+    "description": "Register button"
+  },
+  "createAccount": "Create Account",
+  "@createAccount": {
+    "description": "Create Account title or button"
+  },
+  "welcomeBack": "Welcome Back",
+  "@welcomeBack": {
+    "description": "Greeting on login screen"
+  },
+  "welcomeToApp": "Welcome to BudgetAI",
+  "@welcomeToApp": {
+    "description": "Welcome message on auth screens"
+  },
+  "email": "Email",
+  "@email": {
+    "description": "Email field label"
+  },
+  "emailHint": "Enter your email",
+  "@emailHint": {
+    "description": "Email field placeholder"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "Password field label"
+  },
+  "passwordHint": "Enter your password",
+  "@passwordHint": {
+    "description": "Password field placeholder"
+  },
+  "confirmPassword": "Confirm Password",
+  "@confirmPassword": {
+    "description": "Confirm password field label"
+  },
+  "confirmPasswordHint": "Re-enter your password",
+  "@confirmPasswordHint": {
+    "description": "Confirm password field placeholder"
+  },
+  "forgotPassword": "Forgot Password?",
+  "@forgotPassword": {
+    "description": "Forgot password link"
+  },
+  "dontHaveAccount": "Don't have an account? Register",
+  "@dontHaveAccount": {
+    "description": "Prompt to go to registration"
+  },
+  "alreadyHaveAccount": "Already have an account? Sign In",
+  "@alreadyHaveAccount": {
+    "description": "Prompt to go to login"
+  },
+  "guestContinue": "Continue to App (Guest / Demo)",
+  "@guestContinue": {
+    "description": "Continue without logging in"
+  },
+  "logout": "Log Out",
+  "@logout": {
+    "description": "Log out action"
+  },
+  "logoutConfirmation": "Are you sure you want to log out?",
+  "@logoutConfirmation": {
+    "description": "Confirmation prompt before logging out"
+  },
+
+  "fieldRequired": "This field is required",
+  "@fieldRequired": {
+    "description": "Generic validation error for required fields"
+  },
+  "invalidEmail": "Please enter a valid email address",
+  "@invalidEmail": {
+    "description": "Validation error for invalid email"
+  },
+  "invalidPassword": "Password must be at least 6 characters",
+  "@invalidPassword": {
+    "description": "Validation error for short password"
+  },
+  "passwordsDoNotMatch": "Passwords do not match",
+  "@passwordsDoNotMatch": {
+    "description": "Validation error when passwords don't match"
+  },
+  "invalidAmount": "Please enter a valid amount",
+  "@invalidAmount": {
+    "description": "Validation error for invalid currency amount"
+  },
+  "amountMustBePositive": "Amount must be greater than zero",
+  "@amountMustBePositive": {
+    "description": "Validation error for non-positive amounts"
+  },
+
+  "addAccount": "Add Account",
+  "@addAccount": {
+    "description": "Add account button"
+  },
+  "editAccount": "Edit Account",
+  "@editAccount": {
+    "description": "Edit account screen title"
+  },
+  "deleteAccount": "Delete Account",
+  "@deleteAccount": {
+    "description": "Delete account action"
+  },
+  "accountName": "Account Name",
+  "@accountName": {
+    "description": "Account name field label"
+  },
+  "accountType": "Account Type",
+  "@accountType": {
+    "description": "Account type field label"
+  },
+  "initialBalance": "Initial Balance",
+  "@initialBalance": {
+    "description": "Initial balance field label"
+  },
+  "currentBalance": "Current Balance",
+  "@currentBalance": {
+    "description": "Current balance label"
+  },
+  "bankAccount": "Bank Account",
+  "@bankAccount": {
+    "description": "Bank account type"
+  },
+  "cashWallet": "Cash Wallet",
+  "@cashWallet": {
+    "description": "Cash account type"
+  },
+  "mobileWallet": "Mobile Wallet (Vodafone Cash, etc.)",
+  "@mobileWallet": {
+    "description": "Mobile wallet account type"
+  },
+  "creditCard": "Credit Card",
+  "@creditCard": {
+    "description": "Credit card account type"
+  },
+  "savingsAccount": "Savings Account",
+  "@savingsAccount": {
+    "description": "Savings account type"
+  },
+  "noAccountsYet": "No accounts added yet",
+  "@noAccountsYet": {
+    "description": "Empty state label for accounts"
+  },
+  "selectAccount": "Select Account",
+  "@selectAccount": {
+    "description": "Account selection dropdown placeholder"
+  },
+  "fromAccount": "From Account",
+  "@fromAccount": {
+    "description": "Transfer source account label"
+  },
+  "toAccount": "To Account",
+  "@toAccount": {
+    "description": "Transfer destination account label"
+  },
+
+  "addTransaction": "Add Transaction",
+  "@addTransaction": {
+    "description": "Add transaction button"
+  },
+  "editTransaction": "Edit Transaction",
+  "@editTransaction": {
+    "description": "Edit transaction button"
+  },
+  "deleteTransaction": "Delete Transaction",
+  "@deleteTransaction": {
+    "description": "Delete transaction button"
+  },
+  "transactionDetails": "Transaction Details",
+  "@transactionDetails": {
+    "description": "Transaction details screen title"
+  },
+  "amount": "Amount",
+  "@amount": {
+    "description": "Amount field label"
+  },
+  "amountHint": "0.00",
+  "@amountHint": {
+    "description": "Amount field placeholder"
+  },
+  "category": "Category",
+  "@category": {
+    "description": "Category field label"
+  },
+  "selectCategory": "Select Category",
+  "@selectCategory": {
+    "description": "Category selector placeholder"
+  },
+  "date": "Date",
+  "@date": {
+    "description": "Date field label"
+  },
+  "time": "Time",
+  "@time": {
+    "description": "Time field label"
+  },
+  "note": "Note",
+  "@note": {
+    "description": "Note field label"
+  },
+  "noteHint": "Add an optional note",
+  "@noteHint": {
+    "description": "Note field placeholder"
+  },
+
+  "categoryFood": "Food & Dining",
+  "@categoryFood": {
+    "description": "Food and Dining category"
+  },
+  "categoryTransportation": "Transportation",
+  "@categoryTransportation": {
+    "description": "Transportation category"
+  },
+  "categoryHousing": "Housing & Utilities",
+  "@categoryHousing": {
+    "description": "Housing and Utilities category"
+  },
+  "categoryShopping": "Shopping",
+  "@categoryShopping": {
+    "description": "Shopping category"
+  },
+  "categoryEntertainment": "Entertainment",
+  "@categoryEntertainment": {
+    "description": "Entertainment category"
+  },
+  "categoryHealth": "Health & Medical",
+  "@categoryHealth": {
+    "description": "Health and Medical category"
+  },
+  "categoryEducation": "Education",
+  "@categoryEducation": {
+    "description": "Education category"
+  },
+  "categorySalary": "Salary",
+  "@categorySalary": {
+    "description": "Salary income category"
+  },
+  "categoryInvestments": "Investments",
+  "@categoryInvestments": {
+    "description": "Investments category"
+  },
+  "categoryGroceries": "Groceries",
+  "@categoryGroceries": {
+    "description": "Groceries category"
+  },
+  "categoryOther": "Other",
+  "@categoryOther": {
+    "description": "Other category"
+  },
+
+  "addBudget": "Add Budget",
+  "@addBudget": {
+    "description": "Add budget button"
+  },
+  "budgetLimit": "Budget Limit",
+  "@budgetLimit": {
+    "description": "Budget limit amount label"
+  },
+  "spent": "Spent",
+  "@spent": {
+    "description": "Amount spent in budget"
+  },
+  "remaining": "Remaining",
+  "@remaining": {
+    "description": "Amount remaining in budget"
+  },
+  "overBudget": "Over Budget",
+  "@overBudget": {
+    "description": "Warning when budget is exceeded"
+  },
+  "monthlyBudget": "Monthly Budget",
+  "@monthlyBudget": {
+    "description": "Monthly budget label"
+  },
+  "noBudgetsYet": "No budgets set yet",
+  "@noBudgetsYet": {
+    "description": "Empty state label for budgets"
+  },
+
+  "cashFlow": "Cash Flow",
+  "@cashFlow": {
+    "description": "Cash flow section title"
+  },
+  "netSavings": "Net Savings",
+  "@netSavings": {
+    "description": "Net savings amount label"
+  },
+  "spendingByCategory": "Spending by Category",
+  "@spendingByCategory": {
+    "description": "Category breakdown title"
+  },
+  "monthlyComparison": "Monthly Comparison",
+  "@monthlyComparison": {
+    "description": "Monthly comparison title"
+  },
+  "thisMonth": "This Month",
+  "@thisMonth": {
+    "description": "Period this month"
+  },
+  "lastMonth": "Last Month",
+  "@lastMonth": {
+    "description": "Period last month"
+  },
+  "thisWeek": "This Week",
+  "@thisWeek": {
+    "description": "Period this week"
+  },
+  "allTime": "All Time",
+  "@allTime": {
+    "description": "Period all time"
+  },
+
+  "today": "Today",
+  "@today": {
+    "description": "Relative date today"
+  },
+  "yesterday": "Yesterday",
+  "@yesterday": {
+    "description": "Relative date yesterday"
+  },
+  "tomorrow": "Tomorrow",
+  "@tomorrow": {
+    "description": "Relative date tomorrow"
+  },
+  "justNow": "Just now",
+  "@justNow": {
+    "description": "Relative time just now"
   }
 }
