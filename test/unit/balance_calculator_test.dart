@@ -62,93 +62,87 @@ void main() {
       expect(balance.minorUnits, 70000);
     });
 
-    test(
-      'CRITICAL RULE: internal transfer does NOT count as income or expense in cashflow analytics',
-      () {
-        final transferTx = Transaction(
-          id: 'tx_transfer',
-          ownerId: 'user_123',
-          amount: Money.fromMinorUnits(
-            40000,
-          ), // 400.00 EGP transfer from Bank to Cash
-          type: TransactionType.transfer,
-          accountId: bankAccount.id,
-          destinationAccountId: cashWallet.id,
-          category: 'ATM Withdrawal',
-          dateTime: now,
-        );
+    test('CRITICAL RULE: internal transfer does NOT count as income or expense in cashflow analytics', () {
+      final transferTx = Transaction(
+        id: 'tx_transfer',
+        ownerId: 'user_123',
+        amount: Money.fromMinorUnits(
+          40000,
+        ), // 400.00 EGP transfer from Bank to Cash
+        type: TransactionType.transfer,
+        accountId: bankAccount.id,
+        destinationAccountId: cashWallet.id,
+        category: 'ATM Withdrawal',
+        dateTime: now,
+      );
 
-        final cashFlow = BalanceCalculator.calculateCashFlow(
-          transactions: [transferTx],
-        );
+      final cashFlow = BalanceCalculator.calculateCashFlow(
+        transactions: [transferTx],
+      );
 
-        // Invariant: transfer MUST NOT inflate income or expense
-        expect(
-          cashFlow.totalIncome.minorUnits,
-          0,
-          reason: 'Transfers must not count as income',
-        );
-        expect(
-          cashFlow.totalExpense.minorUnits,
-          0,
-          reason: 'Transfers must not count as expense',
-        );
-        expect(cashFlow.netSavings.minorUnits, 0);
-        expect(cashFlow.transferCount, 1);
-        expect(cashFlow.totalTransferred.minorUnits, 40000);
+      // Invariant: transfer MUST NOT inflate income or expense
+      expect(
+        cashFlow.totalIncome.minorUnits,
+        0,
+        reason: 'Transfers must not count as income',
+      );
+      expect(
+        cashFlow.totalExpense.minorUnits,
+        0,
+        reason: 'Transfers must not count as expense',
+      );
+      expect(cashFlow.netSavings.minorUnits, 0);
+      expect(cashFlow.transferCount, 1);
+      expect(cashFlow.totalTransferred.minorUnits, 40000);
 
-        // But individual account balances must update correctly
-        final bankBalance = BalanceCalculator.calculateAccountBalance(
-          account: bankAccount,
-          transactions: [transferTx],
-        );
-        final cashBalance = BalanceCalculator.calculateAccountBalance(
-          account: cashWallet,
-          transactions: [transferTx],
-        );
+      // But individual account balances must update correctly
+      final bankBalance = BalanceCalculator.calculateAccountBalance(
+        account: bankAccount,
+        transactions: [transferTx],
+      );
+      final cashBalance = BalanceCalculator.calculateAccountBalance(
+        account: cashWallet,
+        transactions: [transferTx],
+      );
 
-        // Bank: 1000 - 400 = 600 EGP
-        expect(bankBalance.minorUnits, 60000);
-        // Cash: 200 + 400 = 600 EGP
-        expect(cashBalance.minorUnits, 60000);
+      // Bank: 1000 - 400 = 600 EGP
+      expect(bankBalance.minorUnits, 60000);
+      // Cash: 200 + 400 = 600 EGP
+      expect(cashBalance.minorUnits, 60000);
 
-        // Total net worth remains unchanged
-        final netWorth = BalanceCalculator.calculateTotalNetWorth(
-          accounts: [bankAccount, cashWallet],
-          transactions: [transferTx],
-        );
-        // Initial total: 1000 + 200 = 1200 EGP (120000 minor units)
-        expect(netWorth.minorUnits, 120000);
-      },
-    );
+      // Total net worth remains unchanged
+      final netWorth = BalanceCalculator.calculateTotalNetWorth(
+        accounts: [bankAccount, cashWallet],
+        transactions: [transferTx],
+      );
+      // Initial total: 1000 + 200 = 1200 EGP (120000 minor units)
+      expect(netWorth.minorUnits, 120000);
+    });
 
-    test(
-      'CRITICAL RULE: draft transactions (OCR/AI) do not alter balances or analytics',
-      () {
-        final draftTx = Transaction(
-          id: 'tx_draft',
-          ownerId: 'user_123',
-          amount: Money.fromMinorUnits(85000),
-          type: TransactionType.expense,
-          accountId: bankAccount.id,
-          category: 'Scanned Supermarket Draft',
-          dateTime: now,
-          isDraft: true, // Pending user confirmation
-        );
+    test('CRITICAL RULE: draft transactions (OCR/AI) do not alter balances or analytics', () {
+      final draftTx = Transaction(
+        id: 'tx_draft',
+        ownerId: 'user_123',
+        amount: Money.fromMinorUnits(85000),
+        type: TransactionType.expense,
+        accountId: bankAccount.id,
+        category: 'Scanned Supermarket Draft',
+        dateTime: now,
+        isDraft: true, // Pending user confirmation
+      );
 
-        final balance = BalanceCalculator.calculateAccountBalance(
-          account: bankAccount,
-          transactions: [draftTx],
-        );
-        final cashFlow = BalanceCalculator.calculateCashFlow(
-          transactions: [draftTx],
-        );
+      final balance = BalanceCalculator.calculateAccountBalance(
+        account: bankAccount,
+        transactions: [draftTx],
+      );
+      final cashFlow = BalanceCalculator.calculateCashFlow(
+        transactions: [draftTx],
+      );
 
-        // Draft must be completely ignored until confirmed
-        expect(balance.minorUnits, bankAccount.initialBalance.minorUnits);
-        expect(cashFlow.totalExpense.minorUnits, 0);
-      },
-    );
+      // Draft must be completely ignored until confirmed
+      expect(balance.minorUnits, bankAccount.initialBalance.minorUnits);
+      expect(cashFlow.totalExpense.minorUnits, 0);
+    });
 
     test(
       'editing or deleting records produces deterministic totals without drift',

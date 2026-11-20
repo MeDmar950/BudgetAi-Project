@@ -16,4 +16,3 @@ abstract final class AppRoutes {
   static const String ocrScan = '/ocr/scan';
   static const String aiChat = '/ai/chat';
 }
-

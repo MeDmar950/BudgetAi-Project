@@ -12,55 +12,6 @@ import 'app_localizations_en.dart';
 
 /// Callers can lookup localized strings with an instance of AppLocalizations
 /// returned by `AppLocalizations.of(context)`.
-///
-/// Applications need to include `AppLocalizations.delegate()` in their app's
-/// `localizationDelegates` list, and the locales they support in the app's
-/// `supportedLocales` list. For example:
-///
-/// ```dart
-/// import 'l10n/app_localizations.dart';
-///
-/// return MaterialApp(
-///   localizationsDelegates: AppLocalizations.localizationsDelegates,
-///   supportedLocales: AppLocalizations.supportedLocales,
-///   home: MyApplicationHome(),
-/// );
-/// ```
-///
-/// ## Update pubspec.yaml
-///
-/// Please make sure to update your pubspec.yaml to include the following
-/// packages:
-///
-/// ```yaml
-/// dependencies:
-///   # Internationalization support.
-///   flutter_localizations:
-///     sdk: flutter
-///   intl: any # Use the pinned version from flutter_localizations
-///
-///   # Rest of dependencies
-/// ```
-///
-/// ## iOS Applications
-///
-/// iOS applications define key application metadata, including supported
-/// locales, in an Info.plist file that is built into the application bundle.
-/// To configure the locales supported by your app, you’ll need to edit this
-/// file.
-///
-/// First, open your project’s ios/Runner.xcworkspace Xcode workspace file.
-/// Then, in the Project Navigator, open the Info.plist file under the Runner
-/// project’s Runner folder.
-///
-/// Next, select the Information Property List item, select Add Item from the
-/// Editor menu, then select Localizations from the pop-up menu.
-///
-/// Select and expand the newly-created Localizations item then, for each
-/// locale your application supports, add a new item and select the locale
-/// you wish to add from the pop-up menu in the Value field. This list should
-/// be consistent with the languages listed in the AppLocalizations.supportedLocales
-/// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
     : localeName = intl.Intl.canonicalizedLocale(locale.toString());
@@ -74,16 +25,6 @@ abstract class AppLocalizations {
   static const LocalizationsDelegate<AppLocalizations> delegate =
       _AppLocalizationsDelegate();
 
-  /// A list of this localizations delegate along with the default localizations
-  /// delegates.
-  ///
-  /// Returns a list of localizations delegates containing this delegate along with
-  /// GlobalMaterialLocalizations.delegate, GlobalCupertinoLocalizations.delegate,
-  /// and GlobalWidgetsLocalizations.delegate.
-  ///
-  /// Additional delegates can be added by appending to this list in
-  /// MaterialApp. This list does not have to be used at all if a custom list
-  /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
         delegate,
@@ -92,131 +33,150 @@ abstract class AppLocalizations {
         GlobalWidgetsLocalizations.delegate,
       ];
 
-  /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
     Locale('en'),
   ];
 
-  /// Application title
-  ///
-  /// In en, this message translates to:
-  /// **'BudgetAI'**
+  // Foundation
   String get appTitle;
-
-  /// App tagline
-  ///
-  /// In en, this message translates to:
-  /// **'Smart Financial Management for Egypt'**
   String get tagline;
-
-  /// Currency code for Egyptian Pound
-  ///
-  /// In en, this message translates to:
-  /// **'EGP'**
   String get currencyEGP;
-
-  /// Currency display symbol
-  ///
-  /// In en, this message translates to:
-  /// **'EGP'**
   String get currencySymbol;
-
-  /// Header label for total balance
-  ///
-  /// In en, this message translates to:
-  /// **'Total Balance'**
+  String get piastre;
+  String get piastres;
   String get totalBalance;
-
-  /// Transaction type income
-  ///
-  /// In en, this message translates to:
-  /// **'Income'**
   String get income;
-
-  /// Transaction type expense
-  ///
-  /// In en, this message translates to:
-  /// **'Expense'**
   String get expense;
-
-  /// Transaction type transfer
-  ///
-  /// In en, this message translates to:
-  /// **'Transfer'**
   String get transfer;
-
-  /// Transactions tab / section
-  ///
-  /// In en, this message translates to:
-  /// **'Transactions'**
   String get transactions;
-
-  /// Section header for recent transactions
-  ///
-  /// In en, this message translates to:
-  /// **'Recent Transactions'**
   String get recentTransactions;
-
-  /// Empty state label for transactions
-  ///
-  /// In en, this message translates to:
-  /// **'No transactions yet'**
   String get noTransactionsYet;
-
-  /// Accounts tab / section
-  ///
-  /// In en, this message translates to:
-  /// **'Accounts'**
   String get accounts;
-
-  /// Budgets tab / section
-  ///
-  /// In en, this message translates to:
-  /// **'Budgets'**
   String get budgets;
-
-  /// Analytics tab / section
-  ///
-  /// In en, this message translates to:
-  /// **'Analytics'**
   String get analytics;
-
-  /// AI Assistant tab / section
-  ///
-  /// In en, this message translates to:
-  /// **'AI Assistant'**
   String get aiAssistant;
-
-  /// Settings tab / section
-  ///
-  /// In en, this message translates to:
-  /// **'Settings'**
   String get settings;
-
-  /// Button to switch language to Arabic
-  ///
-  /// In en, this message translates to:
-  /// **'العربية'**
   String get switchLanguage;
-
-  /// Label for current active language
-  ///
-  /// In en, this message translates to:
-  /// **'English'**
   String get currentLanguage;
-
-  /// Notice explaining OCR draft status
-  ///
-  /// In en, this message translates to:
-  /// **'Scanned receipts are saved as drafts until confirmed by you.'**
   String get ocrDraftNotice;
-
-  /// Disclaimer that AI does not execute financial transactions
-  ///
-  /// In en, this message translates to:
-  /// **'AI insights are assistive and never modify balances or records automatically.'**
   String get aiDisclaimer;
+
+  // Common Actions
+  String get save;
+  String get cancel;
+  String get confirm;
+  String get delete;
+  String get edit;
+  String get add;
+  String get back;
+  String get next;
+  String get submit;
+  String get done;
+  String get close;
+  String get retry;
+  String get search;
+  String get filter;
+  String get apply;
+  String get reset;
+  String get continueButton;
+
+  // Auth & Onboarding
+  String get login;
+  String get register;
+  String get createAccount;
+  String get welcomeBack;
+  String get welcomeToApp;
+  String get email;
+  String get emailHint;
+  String get password;
+  String get passwordHint;
+  String get confirmPassword;
+  String get confirmPasswordHint;
+  String get forgotPassword;
+  String get dontHaveAccount;
+  String get alreadyHaveAccount;
+  String get guestContinue;
+  String get logout;
+  String get logoutConfirmation;
+
+  // Validation
+  String get fieldRequired;
+  String get invalidEmail;
+  String get invalidPassword;
+  String get passwordsDoNotMatch;
+  String get invalidAmount;
+  String get amountMustBePositive;
+
+  // Accounts
+  String get addAccount;
+  String get editAccount;
+  String get deleteAccount;
+  String get accountName;
+  String get accountType;
+  String get initialBalance;
+  String get currentBalance;
+  String get bankAccount;
+  String get cashWallet;
+  String get mobileWallet;
+  String get creditCard;
+  String get savingsAccount;
+  String get noAccountsYet;
+  String get selectAccount;
+  String get fromAccount;
+  String get toAccount;
+
+  // Transactions
+  String get addTransaction;
+  String get editTransaction;
+  String get deleteTransaction;
+  String get transactionDetails;
+  String get amount;
+  String get amountHint;
+  String get category;
+  String get selectCategory;
+  String get date;
+  String get time;
+  String get note;
+  String get noteHint;
+
+  // Categories
+  String get categoryFood;
+  String get categoryTransportation;
+  String get categoryHousing;
+  String get categoryShopping;
+  String get categoryEntertainment;
+  String get categoryHealth;
+  String get categoryEducation;
+  String get categorySalary;
+  String get categoryInvestments;
+  String get categoryGroceries;
+  String get categoryOther;
+
+  // Budgets
+  String get addBudget;
+  String get budgetLimit;
+  String get spent;
+  String get remaining;
+  String get overBudget;
+  String get monthlyBudget;
+  String get noBudgetsYet;
+
+  // Analytics
+  String get cashFlow;
+  String get netSavings;
+  String get spendingByCategory;
+  String get monthlyComparison;
+  String get thisMonth;
+  String get lastMonth;
+  String get thisWeek;
+  String get allTime;
+
+  // Egyptian Dates & Time
+  String get today;
+  String get yesterday;
+  String get tomorrow;
+  String get justNow;
 }
 
 class _AppLocalizationsDelegate
@@ -237,7 +197,6 @@ class _AppLocalizationsDelegate
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-  // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'ar':
       return AppLocalizationsAr();

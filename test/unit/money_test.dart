@@ -52,17 +52,14 @@ void main() {
       expect(Money.parse('0.00').isZero, isTrue);
     });
 
-    test(
-      'throws FormatException on invalid decimal strings or excessive precision',
-      () {
-        expect(() => Money.parse(''), throwsFormatException);
-        expect(() => Money.parse('abc'), throwsFormatException);
-        expect(
-          () => Money.parse('12.345'),
-          throwsFormatException,
-        ); // exceeds 2 decimal places
-      },
-    );
+    test('throws FormatException on invalid decimal strings or excessive precision', () {
+      expect(() => Money.parse(''), throwsFormatException);
+      expect(() => Money.parse('abc'), throwsFormatException);
+      expect(
+        () => Money.parse('12.345'),
+        throwsFormatException,
+      ); // exceeds 2 decimal places
+    });
 
     test('formats correctly for English and Arabic locales', () {
       final money = Money.fromMinorUnits(15050);
